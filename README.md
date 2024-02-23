@@ -20,3 +20,6 @@
 -   Object
 -   Array
 -   Function
+
+recursion
+closure

@@ -1,3 +1,8 @@
+let fname = `Ivan`;
+const lname = `Wong`;
+
+console.log(fname, lname);
+
 // function sayHello() {
 //     for (var i = 0; i < 5; i++) {
 //         console.log(i);

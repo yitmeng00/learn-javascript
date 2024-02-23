@@ -12,4 +12,17 @@ const jobs = [
 // modern js arrow function
 const activeJobs = jobs.filter((job) => job.isActive);
 
+class Person {
+    constructor() {
+        this.age = 0;
+
+        setInterval(() => {
+            this.age++; // `this` properly refers to the person object
+        }, 1000);
+    }
+}
+
+const p = new Person();
+
 console.log(activeJobs);
+console.log(p);

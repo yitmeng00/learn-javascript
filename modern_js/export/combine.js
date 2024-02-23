@@ -1,3 +1,3 @@
-import Teacher, { promote } from "./exported_functions.js";
+import Teacher, { promote } from "./functions.js";
 
 console.log(Teacher, promote);
