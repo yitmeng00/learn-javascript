@@ -66,7 +66,19 @@ function JSClock() {
     return temp;
 }
 
-JSClock();
+function JSDate() {
+    const time = new Date();
+
+    const day = String(time.getDate()).padStart(2, "0");
+    const month = String(time.getMonth() + 1).padStart(2, "0"); // Months are 0-based, so add 1
+    const year = time.getFullYear();
+
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
+}
+
+console.log(JSClock());
+console.log(JSDate());
 
 // Date and time formatting
 // July 17, 2014 00:00:00 UTC:
