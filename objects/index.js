@@ -2,9 +2,9 @@
 Creating new object
 */
 const obj = {
-    property1: value1, // property name may be an identifier
-    2: value2, // or a number
-    "property n": value3, // or a string
+    property1: "value1", // property name may be an identifier
+    2: "value2", // or a number
+    "property n": "value3", // or a string
 };
 
 const myobj = new Object();
@@ -12,18 +12,19 @@ myobj.a = 5;
 myobj.b = 12;
 
 /*
+Deleting properties
+*/
+delete myobj.a;
+console.log("a" in myobj); // false
+
+/*
 Accessing the object
 */
-let person = {
-    name: "Ivan",
-    age: 24,
-};
-
 // Dot notation to access property
-console.log(person.name);
+console.log(obj.property1);
 
 // Bracket notation to access property
-console.log(person[`name`]);
+console.log(obj[`property n`]);
 
 /*
 Enumerating properties
@@ -50,6 +51,14 @@ function showProps(obj, objName) {
     console.log(result);
 }
 
+/*
+When you use a `for...in` loop to iterate over the properties of `obj`, 2 will log out first before property 1 because of the ECMAScript specification sequence:
+1. Integer keys (array indices) in ascending numerical order.
+2. String keys that are non-integer in the order they were added to the object.
+3. Symbol keys (not relevant in your example).
+*/
+showProps(obj, "Test Object");
+
 // Object.getOwnPropertyNames(). This method returns an array containing all the own string property names in the object myObj, regardless of if they are enumerable or not.
 function listAllProperties(myObj) {
     let objectToInspect = myObj;
@@ -63,15 +72,14 @@ function listAllProperties(myObj) {
     return result;
 }
 
+console.log(listAllProperties(obj));
+
 /*
-Deleting properties
+Prevent adding properties
 */
-// Creates a new object, myobj, with two properties, a and b.
-const myobj = new Object();
-myobj.a = 5;
-myobj.b = 12;
-
-// Removes the a property, leaving myobj with only the b property.
-delete myobj.a;
-console.log("a" in myobj); // false
-
+// Prevents the modification of existing property attributes and values, and prevents the addition of new properties.
+Object.freeze(obj);
+// Prevents the addition of new properties to an object.
+Object.preventExtensions(obj);
+// Prevents the modification of attributes of existing properties, and prevents the addition of new properties.
+Object.seal(obj);
